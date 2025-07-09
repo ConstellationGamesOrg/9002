@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "Build (Debug, Linux)",
+            "program": "${workspaceFolder}/bin/Debug/9002Game",
+            "args": [],
+            "externalConsole": false,
+            "cwd": "${workspaceFolder}"
+        },
+        // TODO: Test windows configurations
+        {
+            "name": "Debug (Windows)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "preLaunchTask": "Build (Debug, Windows)",
+            "program": "${workspaceFolder}/bin/Debug/9002Game.exe",
+            "args": [],
+            "externalConsole": false,
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

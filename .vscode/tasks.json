@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build (Debug, Linux)",
+            "dependsOn": [
+                "Premake (Debug, Linux)",
+                "Make (Debug, Linux)"
+            ]
+        },
+        {
+            "label": "Build (Debug, Windows)",
+            "dependsOn": [
+                "Premake (Debug, Windows)",
+                "Make (Debug, Windows)"
+            ]
+        },
+        {
+            "label": "Premake (Debug, Linux)",
+            "type": "shell",
+            "command": "premake5",
+            "args": [
+                "gmake"
+            ]
+        },
+        {
+            "label": "Make (Debug, Linux)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "config=debug_linux-x86_64"
+            ]
+        },
+        {
+            "label": "Premake (Debug, Windows)",
+            "type": "shell",
+            "command": "premake5",
+            "args": [
+                "gmake"
+            ]
+        },
+        {
+            "label": "Make (Debug, Windows)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "config=debug_windows-x86_64"
+            ]
+        }
+    ]
+}
