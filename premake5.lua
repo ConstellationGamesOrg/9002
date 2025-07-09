@@ -23,9 +23,9 @@ project "9002Game"
     filter "platforms:Windows-x86_64"
         system "Windows"
         architecture "x86_64"
-        defines { "PLATFORM_WINDOWS=1" }
+        --defines { "PLATFORM_WINDOWS=1" }
     
     filter "platforms:Linux-x86_64"
         system "Linux"
         architecture "x86_64"
-        defines { "PLATFORM_LINUX=1" }
+        --defines { "PLATFORM_LINUX=1" }
