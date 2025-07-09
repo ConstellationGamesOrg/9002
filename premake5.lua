@@ -13,6 +13,9 @@ project "9002Game"
         defines { "DEBUG" }
         symbols "On"
 
+    -- Tools (for quickly using map editors or whatever else)
+    -- Could be put here with no symbols, but also no optimizations in future
+
     filter "configurations:Release"
         defines { "NDEBUG" }
         optimize "On"
