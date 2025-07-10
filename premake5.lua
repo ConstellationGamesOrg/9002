@@ -7,7 +7,7 @@ project "9002Game"
     language "C++"
     targetdir "bin/%{cfg.buildcfg}"
 
-    files { "**.h", "**.cpp" }
+    files { "**.cpp", "**.hpp", "**.c", "**.h" }
 
     filter "configurations:Debug"
         defines { "DEBUG" }
@@ -19,12 +19,12 @@ project "9002Game"
     filter "configurations:Release"
         defines { "NDEBUG" }
         optimize "On"
-    
+
     filter "platforms:Windows-x86_64"
         system "Windows"
         architecture "x86_64"
         --defines { "PLATFORM_WINDOWS=1" }
-    
+
     filter "platforms:Linux-x86_64"
         system "Linux"
         architecture "x86_64"
