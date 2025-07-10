@@ -40,15 +40,17 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Doxygen Action
-        uses: mattnotmitt/doxygen-action@v1.12
+        uses: ssciwr/doxygen-install@v1
         with:
-          doxyfile-path: 'doc/Doxygen.cfg'
+          version: "1.14.0"
+      - name: Generate Documentation
+        run: doxygen doc/Doxygen.cfg
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'html/'
+          path: 'html/*'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
