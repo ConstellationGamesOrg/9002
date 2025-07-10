@@ -1,6 +1,8 @@
 {
 	"recommendations": [
 		"ms-vscode.cpptools",
+		"ms-vscode.cmake-tools",
+		"matepek.vscode-catch2-test-adapter",
 		"editorconfig.editorconfig",
 		"gruntfuggly.todo-tree"
 	]

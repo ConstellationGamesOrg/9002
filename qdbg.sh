@@ -1,1 +1,0 @@
-premake5 gmake;make config=debug_linux-x86_64;./bin/Debug/9002Game
