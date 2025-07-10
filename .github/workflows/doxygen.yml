@@ -39,11 +39,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
       - name: Doxygen Action
-        uses: mattnotmitt/doxygen-action@v1.12
+        uses: ssciwr/doxygen-install@v1
         with:
-          doxyfile-path: 'doc/Doxygen.cfg'
+          version: "1.14.0"
+      - name: Generate Documentation
+        run: doxygen doc/Doxygen.cfg
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
