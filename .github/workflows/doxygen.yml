@@ -43,18 +43,17 @@ jobs:
         uses: ssciwr/doxygen-install@v1
         with:
           version: "1.14.0"
+      - name: Create html folder
+        run: |
+          mkdir html
       - name: Generate Documentation
         run: doxygen doc/Doxygen.cfg
-      - name: Prepare Pages content
-        run: |
-          mkdir -p site-deploy
-          cp -r html/* site-deploy/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'site-deploy/'
+          path: 'html/'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
