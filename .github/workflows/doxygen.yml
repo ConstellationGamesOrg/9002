@@ -29,5 +29,4 @@ jobs:
       - name: Doxygen Action
         uses: mattnotmitt/doxygen-action@v1.9.8
         with:
-          working-directory: 'submodule/'
           doxyfile-path: 'doc/Doxygen.cfg'
