@@ -1,9 +1,10 @@
 #include <Game.hpp>
 
-#include <unistd.h>
-#include <getopt.h>
 #include <iostream>
+
+#ifdef PLATFORM_UNIX
 #include <cstdlib>
+#include <getopt.h>
 
 void PrintVersion()
 {
@@ -20,9 +21,13 @@ void PrintHelp(const char* program_name)
 	          << "  -t, --toggle          Random toggle\n"
 	          << std::endl;
 }
+#endif
 
 int main(int argc, char* argv[])
 {
+#ifdef PLATFORM_UNIX
+	// NOTE: This little argument demo could become useful in future.
+	// The only issue would be that Microsoft Windows does not have getopt.h.
 	int exampleValue = 0;
 	bool isToggled = false;
 
@@ -73,9 +78,7 @@ int main(int argc, char* argv[])
 		}
 		std::cout << std::endl;
 	}
-
-	// NOTE: This little argument demo could become useful in future.
-	// The only issue would be that Microsoft Windows does not have unistd.h.
+#endif
 
 	Game game;
 	game.Run();

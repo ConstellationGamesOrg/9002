@@ -3,9 +3,10 @@ cmake_minimum_required(VERSION 3.14...4.0)
 project(9002Game LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 23)
 
-# Fix for glad
+# Fix for glad.
 set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 
+# Find git revision.
 include(FindGit OPTIONAL)
 if (GIT_FOUND AND EXISTS ${PROJECT_SOURCE_DIR}/.git)
     execute_process(
@@ -22,6 +23,7 @@ add_executable(9002Game "${PROJECT_SOURCES}")
 
 # TODO: Disable console on windows release builds.
 
+# Macro definitions
 target_compile_definitions(9002Game PRIVATE
     $<$<CONFIG:Debug>:DEBUG>
 
@@ -35,11 +37,25 @@ target_compile_definitions(9002Game PRIVATE
     VERSION_GIT="${VERSION_GIT}"
 )
 
+# Basic platform detection
+if(WIN32)
+    message("Platform: Windows.")
+    target_compile_definitions(9002Game PRIVATE PLATFORM_WINDOWS)
+elseif(UNIX)
+    message("Platform: Unix-like system.")
+    target_compile_definitions(9002Game PRIVATE PLATFORM_UNIX)
+endif()
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
+    message("Targeting ARM64 architecture.")
+    target_compile_definitions(9002Game PRIVATE PLATFORM_ARM64)
+endif()
+
+# Target compile options
 option(TREAT_WARNINGS_AS_ERRORS "Treat warnings as errors" OFF)
 if(TREAT_WARNINGS_AS_ERRORS)
     target_compile_options(9002Game PRIVATE
-        $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
-        $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic -Werror>
+        $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX -D_CRT_SECURE_NO_WARNINGS>
+        $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic -Werror -D_CRT_SECURE_NO_WARNINGS>
     )
 else()
     target_compile_options(9002Game PRIVATE
@@ -48,6 +64,7 @@ else()
     )
 endif()
 
+# Copy the res/ folder to the output binary destination.
 if(MSVC)
     add_custom_target(copy_data ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -79,7 +96,7 @@ add_dependencies(9002Game glm)
 add_dependencies(9002Game imgui)
 add_dependencies(9002Game EnTT::EnTT)   # EnTT
 add_dependencies(9002Game OpenAL)       # OpenALSoft
-add_dependencies(9002Game Catch2)       # Catch2
+add_dependencies(9002Game Catch2)
 add_dependencies(9002Game Jolt)         # JoltPhysics
 
 target_include_directories(9002Game PRIVATE src)
