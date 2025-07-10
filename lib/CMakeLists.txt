@@ -151,19 +151,19 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(OpenALSoft)
 
-#- GOOGLETEST ---------------------------------------------------------------
+#- Catch2 ---------------------------------------------------------------
 
-message("Fetching Google Test")
+message("Fetching Catch2")
 
 FetchContent_Declare(
-    GoogleTest
-    GIT_REPOSITORY https://github.com/google/googletest.git
-    GIT_TAG        v1.17.0
+    Catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG        v3.8.1
     GIT_SHALLOW    TRUE
     GIT_PROGRESS   TRUE
 )
 
-FetchContent_MakeAvailable(GoogleTest)
+FetchContent_MakeAvailable(Catch2)
 
 #- JOLT PHYSICS -------------------------------------------------------------
 

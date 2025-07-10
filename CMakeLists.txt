@@ -79,7 +79,7 @@ add_dependencies(9002Game glm)
 add_dependencies(9002Game imgui)
 add_dependencies(9002Game EnTT::EnTT)   # EnTT
 add_dependencies(9002Game OpenAL)       # OpenALSoft
-add_dependencies(9002Game gtest)        # GoogleTest
+add_dependencies(9002Game Catch2)       # Catch2
 add_dependencies(9002Game Jolt)         # JoltPhysics
 
 target_include_directories(9002Game PRIVATE src)
@@ -87,4 +87,4 @@ target_include_directories(9002Game PRIVATE src)
 target_include_directories(spdlog PRIVATE include)
 target_include_directories(glad PRIVATE include)
 
-target_link_libraries(9002Game PRIVATE glfw glad spdlog glm imgui EnTT::EnTT OpenAL gtest Jolt)
+target_link_libraries(9002Game PRIVATE glfw glad spdlog glm imgui EnTT::EnTT OpenAL Catch2 Jolt)
