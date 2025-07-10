@@ -45,12 +45,16 @@ jobs:
           version: "1.14.0"
       - name: Generate Documentation
         run: doxygen doc/Doxygen.cfg
+      - name: Prepare Pages content
+        run: |
+          mkdir -p site-deploy
+          cp -r html/* site-deploy/
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'html/'
+          path: 'site-deploy/'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
