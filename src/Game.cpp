@@ -4,7 +4,8 @@
 
 Game::Game()
 {
-    spdlog::set_level(spdlog::level::trace);
+	// TODO: Experiment with spdlog::set_pattern and log sinks
+	spdlog::set_level(spdlog::level::trace);
 	spdlog::trace("Trace example");
 	spdlog::debug("Debug example");
 	spdlog::info("Info example");
