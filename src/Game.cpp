@@ -16,6 +16,7 @@ Game::Game()
 
 Game::~Game()
 {
+	spdlog::shutdown();
 }
 
 void Game::Run()
