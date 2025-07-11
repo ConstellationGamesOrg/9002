@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Window.hpp>
+#include <spdlog/spdlog.h>
 
 class Game
 {

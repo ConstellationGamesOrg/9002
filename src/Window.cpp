@@ -1,7 +1,5 @@
 #include <Window.hpp>
 
-#include <spdlog/spdlog.h>
-
 static void GLFWErrorCallback(int error, const char* description)
 {
 	spdlog::error("GLFW Error ({}): {}", error, description);
@@ -140,6 +138,17 @@ void Window::Init(const WindowProperties& properties)
 			spdlog::error("GLAD: Unable to initialize OpenGL context");
 			return;
 		}
+
+		spdlog::info("OpenGL Version: {}", reinterpret_cast<const char*>(glGetString(GL_VERSION)));
+		spdlog::info("OpenGL Renderer: {}", reinterpret_cast<const char*>(glGetString(GL_RENDERER)));
+		spdlog::info("OpenGL Vendor: {}", reinterpret_cast<const char*>(glGetString(GL_VENDOR)));
+
+		if (!GLAD_GL_VERSION_4_5)
+		{
+			spdlog::error("OpenGL 4.5 not supported! Available version: {}.{}", GLVersion.major, GLVersion.minor);
+			return;
+		}
+
 		glDebugMessageCallback(DebugMessageCallback, nullptr);
 		glEnable(GL_DEBUG_OUTPUT);
 		glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
