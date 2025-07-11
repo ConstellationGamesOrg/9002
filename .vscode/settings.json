@@ -61,6 +61,24 @@
 		"__split_buffer": "cpp",
 		"__tree": "cpp",
 		"__verbose_abort": "cpp",
-		"locale": "cpp"
+		"locale": "cpp",
+		"condition_variable": "cpp",
+		"deque": "cpp",
+		"fstream": "cpp",
+		"iomanip": "cpp",
+		"istream": "cpp",
+		"mutex": "cpp",
+		"numbers": "cpp",
+		"queue": "cpp",
+		"ranges": "cpp",
+		"semaphore": "cpp",
+		"shared_mutex": "cpp",
+		"stack": "cpp",
+		"stop_token": "cpp",
+		"streambuf": "cpp",
+		"text_encoding": "cpp",
+		"thread": "cpp",
+		"__hash_table": "cpp",
+		"__config": "cpp"
 	}
 }

@@ -20,9 +20,28 @@ Game::~Game()
 
 void Game::Run()
 {
-	while (IsRunning)
+	OnInit();
+	while (m_IsRunning)
 	{
-		//spdlog::trace("Hello, world!");
-		IsRunning = false;
+		OnUpdate();
 	}
+	OnShutdown();
+}
+
+void Game::OnInit()
+{
+	m_Window.Init({"9002 Game", 1280u, 720u, true});
+}
+
+void Game::OnShutdown()
+{
+	m_Window.Shutdown();
+}
+
+void Game::OnUpdate()
+{
+	m_Window.OnUpdate();
+    glClear(GL_COLOR_BUFFER_BIT);
+	glClearColor(1.0f, 0.0f, 140.0f / 255.0f, 1.0f);
+	//m_IsRunning = false;
 }
